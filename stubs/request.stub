@@ -1,0 +1,25 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest;
+
+class {{ class }} extends FormRequest
+{
+
+    use BaseRequest;
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+
+    public function rules(): array
+    {
+        return [
+            //
+        ];
+    }
+}
