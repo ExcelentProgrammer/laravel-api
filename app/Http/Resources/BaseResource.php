@@ -22,7 +22,8 @@ trait BaseResource
                 "previousPageUrl" => $data->previousPageUrl(),
                 "nextPageUrl" => $data->nextPageUrl(),
                 "total" => $data->total(),
-                "perPage" => $data->perPage()
+                "perPage" => $data->perPage(),
+                "lastPage"=>$data->lastPage()
             ]
         ];
     }
