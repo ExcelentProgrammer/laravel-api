@@ -8,6 +8,7 @@ use App\Exceptions\IsExpiredException;
 use App\Exceptions\SmsNotFoundException;
 use App\Jobs\SendSmsJob;
 use App\Models\SmsConfirm;
+use App\Services\TelegramService;
 use Illuminate\Support\Facades\Date;
 
 class SmsService
@@ -15,7 +16,7 @@ class SmsService
     /**
      * @throws IsBlockException
      */
-    static function sendConfirm($phone, $job = null): bool
+    static function sendConfirm($phone, $job = null): mixed
     {
         $smsConfirm = SmsConfirm::query()->where(['phone' => $phone])->first();
 
@@ -35,7 +36,7 @@ class SmsService
             throw $exception;
         }
 
-        $code = 111111; // TODO: Deploy qilinganda o'zgartirish kerak -> rand(1000, 9999)
+        $code = 1111; // TODO: Deploy qilinganda o'zgartirish kerak -> rand(1000, 9999)
 //        $code = rand(1000, 9999);
         $smsConfirm->fill([
             'code' => $code,
@@ -51,7 +52,10 @@ class SmsService
         } else {
             $smsConfirm->update();
         }
-
+        $telegram = TelegramService::sendMessage($phone, __("confirm:code", ['code' => $smsConfirm->code]));
+        if ($telegram) {
+            return "telegram";
+        }
         if ($job == null) {
             SendSmsJob::dispatch($smsConfirm);
         } else {
