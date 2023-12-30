@@ -34,7 +34,7 @@ class AuthController extends Controller
         try {
             $res = SmsService::sendConfirm($phone);
             return $this->success(__("sms.send:success"), data: [
-                "provider" => $res == "telegram" ? $res : "sms",
+                "provider" => $res === "telegram" ? $res : "sms",
             ]);
         } catch (\Throwable $e) {
             return $this->error($e->getMessage());
@@ -61,7 +61,7 @@ class AuthController extends Controller
                 return $this->success(
                     message: __("sms.confirm"),
                     data: [
-                        "provider" => $res == "telegram" ? $res : "sms",
+                        "provider" => $res === "telegram" ? $res : "sms",
                         "token" => $token
                     ]
                 );
@@ -115,7 +115,7 @@ class AuthController extends Controller
         try {
             $res = SmsService::sendConfirm($phone);
             return $this->success(__("sms.send:success"), data: [
-                "provider" => $res == "telegram" ? $res : "sms"
+                "provider" => $res === "telegram" ? $res : "sms"
             ]);
         } catch (\Throwable $e) {
             return $this->error($e->getMessage());
