@@ -10,10 +10,12 @@ class Test extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     */
-    protected $fillable = [];
+
+    protected $fillable = [
+        "name"
+    ];
+
+
     
     protected static function newFactory(): TestFactory
     {

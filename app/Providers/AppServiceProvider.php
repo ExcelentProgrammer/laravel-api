@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Env;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        if (Env::get("REDIRECT_HTTPS", false)) {
+            $this->app['request']->server->set("HTTPS", true);
+            URL::forceScheme("https");
+        }
     }
 
     /**
