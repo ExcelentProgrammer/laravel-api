@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Services;
+
+class {{class}}
+{
+    use MainService;
+
+    public function __construct()
+    {
+        $this->model = {{model}}::class;
+        $this->resource = {{resource}}::class;
+    }
+
+}

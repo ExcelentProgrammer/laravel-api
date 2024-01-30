@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 trait MainService
 {
-    public object $resource;
-    public object $model;
+    public mixed $resource;
+    public mixed $model;
 
     function all(): AnonymousResourceCollection
     {
@@ -59,7 +59,15 @@ trait MainService
         return $this->resource::collection($this->model::query()->where($keys)->get());
     }
 
-    function filterPaginate(array|string $keys, $search = "", $lang = false, int $count = null, string $q = null)
+    /**
+     * @param array|string $keys
+     * @param string $search
+     * @param bool $lang
+     * @param int|null $count
+     * @param string|null $q
+     * @return mixed
+     */
+    function filterPaginate(array|string $keys, string $search = "", bool $lang = false, int $count = null, string $q = null): mixed
     {
         $count = $count ?? Env::get("PAGE_SIZE");
         return $this->resource::paginate($this->model::query()->where($keys)->where(function ($query) use ($q, $search, $lang) {
@@ -70,10 +78,5 @@ trait MainService
             if ($q != null)
                 $query->where(DB::raw("LOWER($field)"), "like", "%" . $q . "%");
         })->paginate($count));
-    }
-
-    function search($q)
-    {
-        return $q;
     }
 }
