@@ -11,6 +11,6 @@ Route::get('/', function () {
 
 
 Route::get("test", function () {
-    event(new MessageSend("salom"));
+    MessageSend::broadcast("salom");
     return Response::json(['success' => true]);
 });
