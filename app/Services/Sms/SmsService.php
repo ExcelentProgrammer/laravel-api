@@ -8,7 +8,6 @@ use App\Exceptions\IsExpiredException;
 use App\Exceptions\SmsNotFoundException;
 use App\Jobs\SendSmsJob;
 use App\Models\SmsConfirm;
-use App\Services\TelegramService;
 use Illuminate\Support\Facades\Date;
 
 class SmsService
@@ -52,10 +51,7 @@ class SmsService
         } else {
             $smsConfirm->update();
         }
-        $telegram = TelegramService::sendMessage($phone, __("confirm:code", ['code' => $smsConfirm->code]));
-        if ($telegram) {
-            return "telegram";
-        }
+
         if ($job == null) {
             SendSmsJob::dispatch($smsConfirm);
         } else {
