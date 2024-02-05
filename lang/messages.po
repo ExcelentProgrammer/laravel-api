@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-05 19:54+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: storage/framework/views/07c44920c321817d7d1894b9174857f9.php:6
+#: storage/framework/views/07c44920c321817d7d1894b9174857f9.php:11
+#: storage/framework/views/aa776eb488faa3a4691b35025c24a903.php:7
+#: storage/framework/views/aa776eb488faa3a4691b35025c24a903.php:12
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:6
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:11
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:55
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:63
+msgid "pagination.previous"
+msgstr ""
+
+#: storage/framework/views/07c44920c321817d7d1894b9174857f9.php:19
+#: storage/framework/views/07c44920c321817d7d1894b9174857f9.php:24
+#: storage/framework/views/aa776eb488faa3a4691b35025c24a903.php:21
+#: storage/framework/views/aa776eb488faa3a4691b35025c24a903.php:25
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:18
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:23
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:98
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:104
+msgid "pagination.next"
+msgstr ""
+
+#: storage/framework/views/85b0c11aed4541683d76708d74eb9454.php:32
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:32
+msgid "Showing"
+msgstr ""
+
+#: storage/framework/views/85b0c11aed4541683d76708d74eb9454.php:35
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:36
+msgid "to"
+msgstr ""
+
+#: storage/framework/views/85b0c11aed4541683d76708d74eb9454.php:38
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:43
+msgid "of"
+msgstr ""
+
+#: storage/framework/views/85b0c11aed4541683d76708d74eb9454.php:41
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:46
+msgid "results"
+msgstr ""
+
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:2
+msgid "Pagination Navigation"
+msgstr ""
+
+#: storage/framework/views/bc08d6cf33ffc6452213c99095f7680a.php:87
+msgid "Go to page :page"
+msgstr ""
+
+#: storage/framework/views/f5d088a7d4a7244a4ed628eebe44f020.php:15
+msgid "Jscorp/laravel"
+msgstr ""
+
+#: storage/framework/views/f5d088a7d4a7244a4ed628eebe44f020.php:16
+msgid "Assalomu aleykum"
+msgstr ""
+
+#: app/Jobs/SendSmsJob.php:31
+msgid "confirm:code"
+msgstr ""
+
+#: app/Services/MainService.php:34 app/Services/MainService.php:36
+#: app/Models/BaseModel.php:29
+msgid "not:found"
+msgstr ""
+
+#: app/Services/Sms/SmsService.php:30
+msgid "phone:block:resend"
+msgstr ""
+
+#: app/Services/Sms/SmsService.php:74 app/Services/Sms/SmsService.php:97
+msgid "sms:invalid:code"
+msgstr ""
+
+#: app/Services/Sms/SmsService.php:80
+msgid "sms:time:expired"
+msgstr ""
+
+#: app/Services/Sms/SmsService.php:85
+msgid "phone:block:try"
+msgstr ""
+
+#: app/Rules/PhoneRule.php:19
+msgid "phone:invalid"
+msgstr ""
+
+#: app/Http/Controllers/BaseCrudController.php:48
+msgid "delete:success"
+msgstr ""
+
+#: app/Http/Controllers/Auth/AuthController.php:36
+#: app/Http/Controllers/Auth/AuthController.php:117
+msgid "sms.send:success"
+msgstr ""
+
+#: app/Http/Controllers/Auth/AuthController.php:62
+msgid "sms.confirm"
+msgstr ""
+
+#: app/Http/Controllers/Auth/AuthController.php:69
+msgid "invalid:error"
+msgstr ""
+
+#: app/Http/Controllers/Auth/AuthController.php:84
+msgid "invalid:password"
+msgstr ""
+
+#: app/Http/Controllers/Auth/AuthController.php:105
+msgid "user.update:profile"
+msgstr ""
+
+#: app/Http/Controllers/Auth/AuthController.php:135
+msgid "reset:password:done"
+msgstr ""
+
+#: app/Http/Controllers/Auth/AuthController.php:137
+msgid "reset:password:error"
+msgstr ""
+
+#: app/Http/Controllers/Auth/AuthController.php:152
+msgid "set:password:done"
+msgstr ""
+
+#: app/Http/Middleware/Authenticate.php:21
+msgid "unregister:user"
+msgstr ""

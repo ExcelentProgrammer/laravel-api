@@ -12,14 +12,17 @@
 <body>
 <div class="w-[100vw] h-[100vh] flex justify-center items-center">
     <div>
-        <h1 class="text-red-500 text-[40px] font-bold text-center">Jscorp/laravel</h1>
+        <h1 class="text-red-500 text-[40px] font-bold text-center">{{ __("Jscorp/laravel") }}</h1>
+        <h1 class="text-black mb-3 text-[20px] font-bold text-center">{{ __("Assalomu aleykum") }}</h1>
         <a target="_blank" href="https://github.com/ExcelentProgrammer" class="text-blue-500 font-bold">Github</a>
         <span class="border border-1 border-black m-2"></span>
         <a target="_blank" href="https://t.me/Azamov_Samandar" class="text-blue-500 font-bold">Telegram</a>
         <span class="border border-1 border-black m-2"></span>
-        <a target="_blank" href="https://instagram.com/azamov.samandar.2005" class="text-blue-500 font-bold">Instagram</a>
+        <a target="_blank" href="https://instagram.com/azamov.samandar.2005"
+           class="text-blue-500 font-bold">Instagram</a>
         <span class="border border-1 border-black m-2"></span>
-        <a target="_blank" href="https://github.com/ExcelentProgrammer/laravel-api.git" class="text-blue-500 font-bold">Source code</a>
+        <a target="_blank" href="https://github.com/ExcelentProgrammer/laravel-api.git" class="text-blue-500 font-bold">Source
+            code</a>
     </div>
 </div>
 </body>
