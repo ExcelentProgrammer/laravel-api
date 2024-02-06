@@ -64,8 +64,22 @@ class ServiceCommand extends Command
             $this->error('Service already exists!');
             return;
         }
+        $arr = explode("/", $path);
+        $namespace = str_replace("/", "\\", $className);
+        $className = str_replace(".php", "", end($arr));
+        $namespace = str_replace($className, "", str_replace("\\" . $className, "", $namespace));
 
-        File::put($path, $this->generateServiceClass($className, $model, $resource, $module, $type));
+        if($namespace != ""){
+            $namespace = "\\".$namespace;
+        }
+
+
+        $folder = implode("/", array_slice($arr, 0, count($arr) - 1));
+
+        if (!File::exists($folder))
+            File::makeDirectory($folder);
+
+        File::put($path, $this->generateServiceClass($className, $model, $resource, $module, $type, $namespace));
 
         $this->info("Service {$className} created successfully!");
     }
@@ -80,13 +94,13 @@ class ServiceCommand extends Command
      * @param $type
      * @return array|bool|string
      */
-    protected function generateServiceClass($className, $model, $resource, $module, $type): array|bool|string
+    protected function generateServiceClass($className, $model, $resource, $module, $type, string $namespace = ""): array|bool|string
     {
         $path = match ($type) {
             "b" => 'stubs/service.stub',
             "m" => 'stubs/module-service.stub'
         };
         $stub = file_get_contents(base_path($path));
-        return str_replace("{{module}}", $module, str_replace("{{resource}}", $resource, str_replace("{{model}}", $model, str_replace('{{class}}', $className, $stub))));
+        return str_replace("{{namespace}}", $namespace, str_replace("{{module}}", $module, str_replace("{{resource}}", $resource, str_replace("{{model}}", $model, str_replace('{{class}}', $className, $stub)))));
     }
 }

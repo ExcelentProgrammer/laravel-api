@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\{{module}}\App\Services;
+namespace Modules\{{module}}\App\Services{{namespace}};
 use App\Services\MainService;
 
 class {{class}}

@@ -62,7 +62,16 @@ class Gettext extends Command
             $files = array_merge($files, $fs);
         }
         $command = new Process(['xgettext', "--keyword=__", "-o", "lang/messages.po", ...$files]);
-        $command->run();
+        $command->run(function ($type, $buffer) {
+            if (Process::ERR === $type) {
+                $this->error('ERR > ' . trim($buffer));
+                $this->info("If gettext, install: sudo apt install gettext");
+                dd();
+            } else {
+                $this->info('OUT > ' . trim($buffer));
+            }
+        });
+
         $loader = new PoLoader();
         $response = $loader->loadFile("lang/messages.po")->toArray()['translations'];
         $messages = [];
