@@ -11,6 +11,8 @@
         "php": "^8.1",
         "ext-gettext": "*",
         "beyondcode/laravel-websockets": "^1.14",
+        "dedoc/scramble": "^0.8.5",
+        "doctrine/dbal": "^3.8",
         "gettext/gettext": "^5.7",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",

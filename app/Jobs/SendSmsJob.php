@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use App\Services\Sms;
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -14,7 +16,7 @@ class SendSmsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $smsConfirm;
+    public mixed $smsConfirm;
 
     public function __construct($smsConfirm)
     {
@@ -29,7 +31,7 @@ class SendSmsJob implements ShouldQueue
         try {
             $smsService = new Sms\SendService();
             $smsService->sendSms($this->smsConfirm->phone, __("confirm:code", ['code' => $this->smsConfirm->code]));
-        } catch (\Exception $e) {
+        } catch (Exception|GuzzleException $e) {
             Log::error("SMS: {$e->getMessage()}");
         }
     }
