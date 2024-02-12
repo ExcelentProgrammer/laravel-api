@@ -4,7 +4,7 @@ namespace App\Enums;
 
 class DaysWeekEnums extends BaseEnum
 {
-    const Monday = "Monday";
+    const  Monday = "Monday";
     const Tuesday = "Tuesday";
     const Wednesday = "Wednesday";
     const Thursday = "Thursday";

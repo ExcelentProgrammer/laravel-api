@@ -20,7 +20,9 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "phone" => ['required', new PhoneRule(), "integer","unique:users,phone"]
+            "phone" => ['required', new PhoneRule(), "integer", "unique:users,phone"],
+            "name" => ['required', 'string'],
+            "password" => ['required', 'string', 'min:8', 'confirmed']
         ];
     }
 }

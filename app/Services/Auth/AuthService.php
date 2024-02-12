@@ -33,8 +33,14 @@ class AuthService
         if ($res) {
             $user = User::query()->where(['phone' => $phone]);
             if (!$user->exists()) {
+                $pendingUser = User::query()->where(['phone' => $phone])->first();
+                if (!$pendingUser) {
+                    return $this->error(__("phone:not:found"));
+                }
                 $user = User::query()->create([
-                    'phone' => $phone
+                    'phone' => $phone,
+                    "name" => $pendingUser->name,
+                    "password" => $pendingUser->password
                 ]);
             } else {
                 $user = $user->first();

@@ -12,6 +12,7 @@ use App\Http\Requests\Api\ResetRequest;
 use App\Http\Requests\Api\SetPasswordRequest;
 use App\Http\Requests\Api\UserUpdateRequest;
 use App\Http\Resources\Api\MeResource;
+use App\Models\PendingUser;
 use App\Services\Auth\AuthService;
 use App\Services\Sms\SmsService;
 use Illuminate\Http\JsonResponse;
@@ -45,8 +46,19 @@ class AuthController extends Controller
     function register(RegisterRequest $request): JsonResponse
     {
         $phone = $request->input("phone");
+        $name = $request->input("name");
+        $password = $request->input("password");
+
+
         try {
             SmsService::sendConfirm($phone);
+
+            PendingUser::query()->updateOrCreate(['phone' => $phone], [
+                "phone" => $phone,
+                "name" => $name,
+                "password" => Hash::make($password)
+            ]);
+
             return $this->success(__("sms.send:success"));
         } catch (Throwable $e) {
             return $this->error($e->getMessage());
@@ -64,6 +76,7 @@ class AuthController extends Controller
     {
         $code = $request->input("code");
         $phone = $request->input("phone");
+
         try {
             return $this->service->confirm($phone, $code);
         } catch (Throwable $e) {
