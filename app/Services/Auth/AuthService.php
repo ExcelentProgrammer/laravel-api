@@ -43,6 +43,7 @@ class AuthService
                     "name" => $pendingUser->name,
                     "password" => $pendingUser->password
                 ]);
+
             } else {
                 $user = $user->first();
             }
@@ -98,5 +99,4 @@ class AuthService
         }
         throw new Exception(__("reset:password:error"));
     }
-
 }
