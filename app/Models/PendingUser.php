@@ -11,7 +11,7 @@ class PendingUser extends Model
 
     public $fillable = [
         "name",
-        "email",
+        "phone",
         "password"
     ];
 

@@ -7,6 +7,7 @@ use App\Exceptions\IsBlockException;
 use App\Exceptions\IsExpiredException;
 use App\Exceptions\SmsNotFoundException;
 use App\Http\Controllers\BaseController;
+use App\Models\PendingUser;
 use App\Models\User;
 use App\Services\Sms\SmsService;
 use Carbon\Carbon;
@@ -33,7 +34,7 @@ class AuthService
         if ($res) {
             $user = User::query()->where(['phone' => $phone]);
             if (!$user->exists()) {
-                $pendingUser = User::query()->where(['phone' => $phone])->first();
+                $pendingUser = PendingUser::query()->where(['phone' => $phone])->first();
                 if (!$pendingUser) {
                     return $this->error(__("phone:not:found"));
                 }
