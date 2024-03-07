@@ -61,7 +61,7 @@ class Gettext extends Command
             $fs = $this->rglob($path . "**/*.php");
             $files = array_merge($files, $fs);
         }
-        $command = new Process(['xgettext', "--keyword=__", "-o", "lang/messages.po", ...$files]);
+        $command = new Process(['xgettext', "--from-code=UTF-8", "--keyword=__", "-o", "lang/messages.po", ...$files]);
         $command->run(function ($type, $buffer) {
             if (Process::ERR === $type) {
                 $this->error('ERR > ' . trim($buffer));
@@ -71,19 +71,23 @@ class Gettext extends Command
                 $this->info('OUT > ' . trim($buffer));
             }
         });
-
         $loader = new PoLoader();
         $response = $loader->loadFile("lang/messages.po")->toArray()['translations'];
         $messages = [];
         $languages = Config::get("app.locales", ['uz', "en", "ru"]);
         foreach ($languages as $language) {
             $this->warn("==============\nStart: $language");
-            $old = json_decode(File::get(base_path("lang/gettext/$language.json")), true);
+
+            try {
+                $old = json_decode(File::get(base_path("lang/gettext/$language.json")), true);
+            } catch (\Throwable $e) {
+                $old = [];
+            }
 
             foreach ($response as $message) {
                 $messages[$message['original']] = $old[$message['original']] ?? "";
             }
-            File::put(base_path("lang/gettext/$language.json"), json_encode($messages, JSON_PRETTY_PRINT));
+            File::put(base_path("lang/gettext/$language.json"), json_encode($messages, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
             $this->info("Success: $language\n==============\n");
         }
         Artisan::call("view:clear");
